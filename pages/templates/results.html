@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Cardiovascular Illness Prediction Results{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>Cardiovascular Illness Prediction</h1>
+  <p>Based on the information you provided, our predictive model has assessed your risk of cardiovascular disease:</p>
+
+  <div class="prediction-summary">
+    <h2>You have a
+      {% if prediction == 1 %}
+        <span class="text-danger">high</span>
+      {% else %}
+        <span class="text-success">low</span>
+      {% endif %}
+      risk of cardiovascular disease
+    </h2>
+  </div>
+
+  <div class="user-information">
+    <h3>Your Information:</h3>
+    <ul>
+      <li><strong>Age:</strong> {{age}} years</li>
+      <li><strong>Height:</strong> {{height}} cm</li>
+      <li><strong>Weight:</strong> {{weight}} kg</li>
+      <li><strong>Systolic Blood Pressure:</strong> {{ap_hi}} mmHg</li>
+      <li><strong>Diastolic Blood Pressure:</strong> {{ap_lo}} mmHg</li>
+      <li><strong>Smoker:</strong> {% if smoke == 1 %}Yes{% else %}No{% endif %}</li>
+      <li><strong>Active:</strong> {% if active == 1 %}Yes{% else %}No{% endif %}</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

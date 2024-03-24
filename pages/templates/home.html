@@ -1,0 +1,100 @@
+<!-- templates/home.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Cardiovascular Disease model</h1><br>
+
+  <!-- This form references the homePost route. -->
+<form action="{% url 'homePost' %}" method="post">
+{% csrf_token %}
+
+<!-- Input for age -->
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 200px;">Age</span>
+  </div>
+  <input type="number" id="age" name="age" class="form-control" placeholder="Enter age in years" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+</div>
+
+<!-- Input for height -->
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 200px;">Height</span>
+  </div>
+  <input type="text" id="height" name="height" class="form-control" placeholder="Enter height in centimeters" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+</div>
+
+<!-- Input for weight -->
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 200px;">Weight</span>
+  </div>
+  <input type="text" id="weight" name="weight" class="form-control" placeholder="Enter weight in kilograms" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+</div>
+
+<!-- Input for systolic blood pressure -->
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 200px;">Systolic Blood Pressure</span>
+  </div>
+  <input type="text" id="systolic" name="systolic" class="form-control" placeholder="Enter systolic blood pressure in mmHg" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+</div>
+
+<!-- Input for diastolic blood pressure -->
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 200px;">Diastolic Blood Pressure</span>
+  </div>
+  <input type="text" id="diastolic" name="diastolic" class="form-control" placeholder="Enter diastolic blood pressure in mmHg" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+</div>
+
+<!-- Radio button list for smoker -->
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 200px;">Smoker</span>
+  </div>
+  <div class="input-group-prepend">
+    <div class="input-group-text">
+      <input type="radio" name="smoker" id="smoker" value="1">
+      <label class="form-check-label" for="smoker" style="margin-left: 10px;">  Yes</label>
+    </div>
+  </div>
+  <div class="input-group-prepend">
+    <div class="input-group-text">
+      <input type="radio" name="smoker" id="non-smoker" value="0">
+      <label class="form-check-label" for="non-smoker" style="margin-left: 10px;">  No</label>
+    </div>
+  </div>
+</div>
+
+<!-- Radio button list for active -->
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" style="width: 200px;">5+ hours exercise/week</span>
+  </div>
+  <div class="input-group-prepend">
+    <div class="input-group-text">
+      <input type="radio" name="active" id="active" value="1">
+      <label class="form-check-label" for="active" style="margin-left: 10px;">Yes</label>
+    </div>
+  </div>
+  <div class="input-group-prepend">
+    <div class="input-group-text">
+      <input type="radio" name="active" id="inactive" value="0">
+      <label class="form-check-label" for="inactive" style="margin-left: 10px;">No</label>
+    </div>
+  </div>
+</div>
+
+
+<!-- Submit button -->
+<div class="input-group mb-3">
+  <button type="submit" class="btn btn-dark form-control">POST YOUR CHOICE</button>
+</div>
+
+</form>
+<!-- End of form. -->
+
+<!-- This error will notify the user if there are issues with the POST request -->
+{% if errorMessage %}<p><strong>{{errorMessage}}</strong></p>{% endif %}
+{% endblock content %}
